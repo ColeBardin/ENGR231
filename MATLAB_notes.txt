@@ -228,3 +228,11 @@ null()
 DEF: Commute
 when AB=BA or AB-BA=0
 
+Declaring symbols:
+REQUIRES SYMBOLIC MATH TOOLBOX
+syms a b c d
+
+
+Trace of matrix
+trace(A)
+
