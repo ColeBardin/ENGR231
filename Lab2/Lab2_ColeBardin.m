@@ -122,6 +122,23 @@ fprintf('5. The number of pairs satisfying Tr(AB) = Tr(BA) is %d\n', count_tr)
 fprintf('5. The number of pairs satisfying Tr(AB) = Tr(A)*Tr(B) is %d\n', count_tr_p)
 
 %% Question 6: Determinant of a matric product AB
+
+clc % Clear the command window
+count = 0;
+tolerance = 1e-10;
+for i=1:10000 % Iterate 10000 times
+    % Generate two random 2x2 matrices with values from -5 to 5
+    A = randi([-5 5], 2);
+    B = randi([-5 5], 2);
+
+    % Check if det(A*B) = det(A)*det(B)
+    if abs(det(A*B)-det(A)*det(B)) < tolerance
+        count = count +1;
+    end
+end
+% Print results
+fprintf('5. The number of pairs satisfying det(AB) = det(A)*det(B) is %d\n', count)
+
 %% Upgraded Challenge: Commuting pairs of 3x3 Matrices
 clc % Clear the Command Window
 count = 0; % Make count variable equal to 0
