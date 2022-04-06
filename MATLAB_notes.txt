@@ -212,3 +212,19 @@ for x = 1:5
 	xsq = x ^2
 end
 disp('done!')
+
+
+
+rref()
+isequal(A, B)
+trace()
+eye()
+det()
+rng()
+randi()
+abs()
+null()
+
+DEF: Commute
+when AB=BA or AB-BA=0
+
