@@ -2,6 +2,8 @@
 %% Matrix Exploration
 %% Question 1: Solve a Linear System by Row Reducing the Augmented Matrix
 
+clc % Clear command window
+
 A = [1, 1, 1; 1, 2, -3; 1, 1, -2]; % Coefficient matrix 
 b = [18; 0; 0]; % b matrix
 AM = [A, b]; % Augmented matrix
@@ -13,6 +15,8 @@ disp(x); % Display the solution set
 
 %% Question 2: Solve a Linear System with a Free Variable
 
+clc % Clear command window
+
 A = [1, 1, 1; 1, 1, -1; 1, 1, 0]; % Coefficient matrix
 b = [4; 0; 2]; % b matrix
 AM = [A, b]; % Augmented matrix
@@ -21,6 +25,8 @@ RAM = rref(AM); % Fully reduced matrix to RREF
 disp(RAM); % Display the RREF matrix
 
 %% Question 3: Matrices in general do not commute
+
+clc % Clear command window
 
 A = [1, 2; 2, 1]; % A matrix for operation
 
@@ -63,16 +69,23 @@ end
 syms a b c d
 Bsym = [a, b; c, d]; % Make matrix with symbols
 
-AmB = ( A*Bsym - Bsym*A ) * 0.5 % Commute A and Bsym
-% Commutations are scaled by a factor of 1/2 to simplify
+AmB = ( A*Bsym - Bsym*A ) * 0.5; % Commute A and Bsym
+% Resultants are scaled by a factor of 1/2 to simplify
+% Print results
+fprintf("AmB =\n")
+disp(AmB)
 
 % 3c
 F = [1, 2; -2, 1]; % F matrix
-FmB = ( F*Bsym - Bsym*F ) * 0.5 % Commute G and Bsym
+FmB = ( F*Bsym - Bsym*F ) * 0.5; % Commute G and Bsym
+% Print results
+fprintf("FmB =\n")
+disp(FmB)
 
 %% Question 4: Commuting Pairs of Matrices
 
 clc % Clear the Command Window
+
 count = 0; % Make count variable equal to 0
 rng(2020) % Set random dumber generation to seed 2020
 
@@ -124,6 +137,7 @@ fprintf('5. The number of pairs satisfying Tr(AB) = Tr(A)*Tr(B) is %d\n', count_
 %% Question 6: Determinant of a matric product AB
 
 clc % Clear the command window
+
 count = 0;
 tolerance = 1e-10;
 for i=1:10000 % Iterate 10000 times
@@ -229,7 +243,9 @@ disp(RAM)
 % Resulting: -5*O + 4*W + 3*C = P
 
 %% Upgraded Challenge 1: Commuting pairs of 3x3 Matrices
+
 clc % Clear the Command Window
+
 count = 0; % Make count variable equal to 0
 %rng(2020) % Set random dumber generation to seed 2020
 
