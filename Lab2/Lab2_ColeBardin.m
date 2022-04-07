@@ -192,14 +192,23 @@ end
 
 clc % Clear command window
 
+% 8a
 A = [1, 1, 1; 1, 2, 3; 1, 1, -1]; % Create A matrix
 b = [6; 14; 0]; % b matrix
 
 XYZ = linsolve(A, b); % Use linsolve() method to generate solutions
 
 % Display results
-fprintf("Solution for system:\nXYZ =\n")
+fprintf("Solution for system with linsolve():\nXYZ =\n")
 disp(XYZ)
+
+% 8b
+AM = [A, b]; % Concatenate coefficient matrix with b matrix to form Augmented Matrix
+RAM = rref(AM); % Use rref() to generate reduced solution
+
+% Display results
+fprintf("RREF of Augmented Matrix with rref():\n")
+disp(RAM)
 
 
 %% Upgraded Challenge: Commuting pairs of 3x3 Matrices
