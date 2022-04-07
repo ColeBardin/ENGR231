@@ -139,6 +139,69 @@ end
 % Print results
 fprintf('5. The number of pairs satisfying det(AB) = det(A)*det(B) is %d\n', count)
 
+%% Question 7: Row Equivalent Matrices and the Reducing Matrix R
+
+clc % Clear the command window
+
+% 7a
+rref_A = rref([1, 1, 10; 1, -1, 0]); % A matrix in RREf
+
+% Matrices to test converted to RREF
+rref_B = rref([2, 1, 15; 1, 2, 15]);
+rref_C = rref([1, 1, 12; 1, -1, 0]);
+rref_D = rref([1, 1, 10; 2, 2, 20]);
+
+% Compare RREF of A to RREF of B
+if isequal(rref_A, rref_B)
+    disp("Matrix A is Row Equivalent to Matrix B")
+else
+    disp("Matrix A is NOT Row Equivalent to Matrix B")
+end
+% Compare RREF of A to RREF of C
+if isequal(rref_A, rref_C)
+    disp("Matrix A is Row Equivalent to Matrix C")
+else
+    disp("Matrix A is NOT Row Equivalent to Matrix C")
+end
+% Compare RREF of A to RREF of D
+if isequal(rref_A, rref_D)
+    disp("Matrix A is Row Equivalent to Matrix D")
+else
+    disp("Matrix A is NOT Row Equivalent to Matrix D")
+end
+
+% 7b
+A = [1, 1, 10; 1, -1, 0]; % A Matrix
+RA = rref(A); % Create verified RREF matrix
+I = eye(2); % Create identity matrix
+
+AM = [A, I]; % Concatenate A and I matrices
+
+RAM = rref(AM); % Solve for RREF of [A, I]
+R = RAM(:, [4,5]); % Retrieve all rows of the last two columns
+
+% Test if R*A is equal to RA (RREF of A)
+if isequal(R*A, RA)
+    fprintf("R*A is equal to RA\nR =\n")
+    disp(R)
+else
+    disp("R*A is NOT equal to RA\n")
+end
+
+%% Question 8: Solving Linear Systems Ax = b using linsolve(A, b)
+
+clc % Clear command window
+
+A = [1, 1, 1; 1, 2, 3; 1, 1, -1]; % Create A matrix
+b = [6; 14; 0]; % b matrix
+
+XYZ = linsolve(A, b); % Use linsolve() method to generate solutions
+
+% Display results
+fprintf("Solution for system:\nXYZ =\n")
+disp(XYZ)
+
+
 %% Upgraded Challenge: Commuting pairs of 3x3 Matrices
 clc % Clear the Command Window
 count = 0; % Make count variable equal to 0
