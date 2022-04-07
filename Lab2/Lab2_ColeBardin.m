@@ -89,7 +89,7 @@ clc % Clear the Command Window
 count = 0; % Make count variable equal to 0
 rng(2020) % Set random dumber generation to seed 2020
 
-for i=1:1000 % Iterate 1000 times
+for i=1:10000 % Iterate 10000 times
     % Generate two random 2x2 matrices with values from -5 to 5
     A = randi([-5 5], 2);
     B = randi([-5 5], 2);
