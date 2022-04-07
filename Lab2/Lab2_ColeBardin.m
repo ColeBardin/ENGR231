@@ -210,8 +210,25 @@ RAM = rref(AM); % Use rref() to generate reduced solution
 fprintf("RREF of Augmented Matrix with rref():\n")
 disp(RAM)
 
+%% Questions 9-10: A Stoichiometry Example/Combustion of Propane
 
-%% Upgraded Challenge: Commuting pairs of 3x3 Matrices
+clc % Clear command window
+
+% 9a
+% Form: -X1*O + X2*W + X3*C = P
+% [#C; #H; #O]
+A = [0, 0, 1; 0, 2, 0; -2, 1, 2]; % Create A matrix for Propane reaction
+b = [3; 8; 0]; % Create b matrix for Propane reaction
+
+AM = [A, b]; % Create augmented matrix with A and b matrices
+RAM = rref(AM); % Get RREF of the AM with rref()
+
+% Display the RAM
+fprintf("RAM =\n")
+disp(RAM)
+% Resulting: -5*O + 4*W + 3*C = P
+
+%% Upgraded Challenge 1: Commuting pairs of 3x3 Matrices
 clc % Clear the Command Window
 count = 0; % Make count variable equal to 0
 %rng(2020) % Set random dumber generation to seed 2020
@@ -229,4 +246,22 @@ end
 
 % Print number of commuting pairs
 fprintf('4. The number of commuting pairs is %d\n', count)
-% Never got even 1 commuting pair! Even with 10,000 iterations at a time
+% Never got 1 commuting pair! Even with 10,000 iterations at a time
+
+%% Upgraded Challenge 2: Combustion of Glucose
+
+clc % Clear command window
+
+% Form: -X1*O + X2*W + X3*C = G
+% [#C; #H; #O]
+A = [0, 0, 1; 0, 2, 0; -2, 1, 2]; % Create A matrix for Propane reaction
+b = [6; 12; 6]; % Create b matrix for Propane reaction
+
+AM = [A, b]; % Create augmented matrix with A and b matrices
+RAM = rref(AM); % Get RREF of the AM with rref()
+
+% Display the RAM
+fprintf("RAM =\n")
+disp(RAM)
+
+% Resulting: -6*O + 6*W + 6*C = G 

@@ -191,16 +191,40 @@ end
 %% Question 8: Solving Linear Systems Ax = b using linsolve(A, b)
 
 clc % Clear command window
-A = [1, 1, 1; 1, 2, 3; 1, 1, -1];
-b = [6; 14; 0];
 
-va = linsolve(A, b);
+% 8a
+A = [1, 1, 1; 1, 2, 3; 1, 1, -1]; % Create A matrix
+b = [6; 14; 0]; % b matrix
 
-disp("Solution for =\n")
-disp(x)
+XYZ = linsolve(A, b); % Use linsolve() method to generate solutions
 
+% Display results
+fprintf("Solution for system with linsolve():\nXYZ =\n")
+disp(XYZ)
 
-%% Upgraded Challenge: Commuting pairs of 3x3 Matrices
+% 8b
+AM = [A, b]; % Concatenate coefficient matrix with b matrix to form Augmented Matrix
+RAM = rref(AM); % Use rref() to generate reduced solution
+
+% Display results
+fprintf("RREF of Augmented Matrix with rref():\n")
+disp(RAM)
+
+%% Questions 9-10: A Stoichiometry Example/Combustion of Propane
+
+clc % Clear command window
+
+A = [0, 0, 1; 0, 2, 0; -2, 1, 2]; % Create A matrix for Propane reaction
+b = [3; 8; 0]; % Create b matrix for Propane reaction
+
+AM = [A, b]; % Create augmented matrix with A and b matrices
+RAM = rref(AM); % Get RREF of the AM with rref()
+
+% Display the RAM
+fprintf("RAM =\n")
+disp(RAM)
+
+%% Upgraded Challenge 1: Commuting pairs of 3x3 Matrices
 clc % Clear the Command Window
 count = 0; % Make count variable equal to 0
 %rng(2020) % Set random dumber generation to seed 2020
@@ -218,4 +242,6 @@ end
 
 % Print number of commuting pairs
 fprintf('4. The number of commuting pairs is %d\n', count)
-% Never got even 1 commuting pair! Even with 10,000 iterations at a time
+% Never got 1 commuting pair! Even with 10,000 iterations at a time
+
+%% Upgraded Challenge 2: Co
