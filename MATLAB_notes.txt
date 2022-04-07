@@ -236,3 +236,10 @@ syms a b c d
 Trace of matrix
 trace(A)
 
+
+Identity matrix:
+eye(n) or eye(r,c)
+eye(2) = [1, 0; 0, 1]
+
+trace(eye(n)) = n
+
