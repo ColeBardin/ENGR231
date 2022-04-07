@@ -106,6 +106,7 @@ fprintf('4. The number of commuting pairs is %d\n', count)
 %% Question 5: Trace of a matrix product AB
 
 clc % Clear the command window
+rng(2020); % Set the seed for random number generation to 2020
 
 % 5a
 A = magic(3);
