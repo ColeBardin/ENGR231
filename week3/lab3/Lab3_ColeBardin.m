@@ -191,3 +191,12 @@ AM = [A, b];
 RAM_3 = rref(AM);
 disp("RAM_3 =")
 disp(RAM_3)
+
+% Question 10: Animate the graph
+N = 2; % Number of complete revolutions of the azimuth. Elevation fixed at 20.
+elevation = 20;
+for k = 0:1:360*N
+    view([k, elevation])
+    pause(0.05);
+end
+
