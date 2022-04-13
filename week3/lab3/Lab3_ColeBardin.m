@@ -44,5 +44,79 @@ clc
 %}
 %% Part B
 %% Questions 5-6: 3D-Plot of the solutions
+% Starter code with reference plane and axes in green.
+clc, close all
+figure
+% Choose POLAR or CARTESIAN coordinates
+use_polar_coordinates = true % options: true (polar) or false (cartesian)
+% Choose a colormap.
+% try other colormaps such as cool, hot, hsv, prism, flag, jet, parula, lines
+colormap flag
+% choose preferred shading for surface plots
+shading faceted % Shading methods are faceted, flat, and interp.
+L = 5; % A default limit so we can easily control the axes.
+% Set up a grid for each 3D plot.
+x = -L : 1 : L; % x will range from -L to L.
+y = -L : 1 : L; % y will range from -L to L.
+[X,Y] = meshgrid(x,y);
+% polar coordinates will be used instead, if you set use_polar_coordinates = true
+if use_polar_coordinates
+    [rad,theta] = meshgrid(0:1:5, 0:2*pi/36: (2*pi) );
+    X = rad.*cos(theta);
+    Y = rad.*sin(theta);
+    Z = 0*X;
+end
+base = surf(X,Y,0*X + 0*Y); % Draw the xy plane. It's equation is z = 0.
+hold on
+grid on
+% add some transparency to the base (xy-plane) for reference
+base.set('facealpha', 0.4); base.set('edgealpha', 0.15);
+base.set('facecolor', 'green');
+darkgreen = [0 0.5 0 ];
+% Adjust the axes limits for optimal view
+L = L + 1;
+zmin = -L; zmax = +L; % these have to be set by trial and error.
+axis([-L, L, -L, L, zmin, zmax]) % set all three axis limits - we are in three space
+axis equal
+% Plot the coordinate axis in the background as reference objects
+t = [-1, 1]; % used to compute endpoints along each axis
+% plot the x-axis
+x = L*t; y = 0*t; z = 0*t;
+plot3( x, y, z, 'color', darkgreen, 'LineWidth', 3)
+% plot the y-axis
+x = 0*t; y = L*t; z = 0*t;
+plot3( x, y, z, 'color', darkgreen, 'LineWidth', 3)
+% plot the z-axis
+x = 0*t; y = 0*t; z = [zmin, zmax];
+plot3( x, y, z, 'color', darkgreen, 'LineWidth', 3)
+set(gca, 'FontSize', 20)
+% Add one reference marker at the tip of the positive x-axis.
+plot3( L, 0, 0, 'bd', 'MarkerSize', 9, 'MarkerFaceColor', 'red')
+% Add one reference marker at the tip of the positive y-axis.
+plot3( 0, L, 0, 'bd', 'MarkerSize', 9, 'MarkerFaceColor', 'green')
+% Add one reference marker at the tip of the positive z-axis.
+plot3( 0, 0, zmax, 'bd', 'MarkerSize', 9, 'MarkerFaceColor', 'blue')
+view([120, 20])
 
+% My code:
+% Make all label and text objects for plot
+xlabel = 'x';
+ylabel = 'y';
+zlabel = 'z';
+title = 'Visualization of a System of Equations';
 
+% Define the vectors
+z = -4 : 0.5 : 4;
+x = z - 2;
+y = z + 2;
+
+% Plotting in 3D.
+solution_set_as_line = plot3(x, y, z, 'blue-', 'LineWidth', 4);
+solution_set_as_points = plot3(x, y, z, 'blueo', 'LineWidth', 1);
+solution_set_as_points.set('MarkerFaceColor', 'yellow', 'MarkerSize', 12)
+
+% Two ways to adjust the view, manually and programatically.
+rotate3d on; view([100,10]); axis equal;
+
+% Make figure full screen
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);
