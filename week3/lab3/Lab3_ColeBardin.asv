@@ -1,6 +1,5 @@
 %% Lab 3 by Cole Bardin     Section: 62
-%% Systems of Linear Equations: Solutions and Visualization
-%% Part A
+%% Systems of Linear Equations: Solutions and Visualization 
 %% Question 1: fprintf()
 clc
 % Set up A and b matrices
@@ -42,7 +41,6 @@ clc
     The free variable is: x3
     The solution can be writte: x1=x3-2, x2=x3+2, x3=x3, where x3 is free
 %}
-%% Part B
-%% Questions 5-6: 3D-Plot of the solutions
+% Par
 
 
