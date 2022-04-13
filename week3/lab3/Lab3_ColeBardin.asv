@@ -9,7 +9,7 @@ b = [2; -2];
 % Make augmented matrix
 AM = [A, b];
 % Print the size of the augmented matrix
-fprintf("The size of the augmented matrix is: %dx%d\n", size(AM))
+fprintf("The size of the augmented matrix is: %d x %d\n", size(AM))
 %% Question 2: rref()
 clc
 % Set up the A and b matrices
@@ -51,7 +51,7 @@ figure
 use_polar_coordinates = true % options: true (polar) or false (cartesian)
 % Choose a colormap.
 % try other colormaps such as cool, hot, hsv, prism, flag, jet, parula, lines
-colormap flag
+colormap hsv
 % choose preferred shading for surface plots
 shading faceted % Shading methods are faceted, flat, and interp.
 L = 5; % A default limit so we can easily control the axes.
@@ -98,3 +98,40 @@ plot3( 0, L, 0, 'bd', 'MarkerSize', 9, 'MarkerFaceColor', 'green')
 plot3( 0, 0, zmax, 'bd', 'MarkerSize', 9, 'MarkerFaceColor', 'blue')
 view([120, 20])
 
+% My code:
+% Make all label and text objects for plot
+xlabel = 'x';
+ylabel = 'y';
+zlabel = 'z';
+title = 'Visualization of a System of Equations';
+
+% Define the vectors
+z = -4 : 0.5 : 4;
+x = z - 2;
+y = z + 2;
+
+% Plotting in 3D.
+solution_set_as_line = plot3(x, y, z, 'blue-', 'LineWidth', 4);
+solution_set_as_points = plot3(x, y, z, 'blueo', 'LineWidth', 1);
+solution_set_as_points.set('MarkerFaceColor', 'yellow', 'MarkerSize', 12)
+
+% Two ways to adjust the view, manually and programatically.
+rotate3d on; view([100,10]); axis equal;
+
+% Make figure full screen
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);
+% Question 7-8 - Use surf command to show the two planes
+% The meshgrid defined by arrays X and Y is still defined.
+% We will use this to show each plane as a surface plot.
+% First plane
+a1 = A(1,1); a2 = A(1,2); a3 = A(1,3); d = b(1);
+Z = (d - a1 * X - a2 * Y)/a3;
+p1 = surf(X,Y,Z); % Draw the plane defined by the first equation.
+p1.set('facealpha', 0.40); % Make the surface plot partially transparent.
+
+% Students should add the second plane here.
+% Access second row of coefficients
+a1_2 = A(2,1); a2_2 = A(2,2); a3_2 = A(2,3); d_2 = b(2); 
+Z_2 = (d_2 - a1_2 * X - a2_2 * Y)/a3_2;
+p2 = surf(X,Y,Z_2);
+p2.set('facealpha', 0.40);

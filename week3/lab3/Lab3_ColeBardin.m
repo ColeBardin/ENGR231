@@ -9,7 +9,7 @@ b = [2; -2];
 % Make augmented matrix
 AM = [A, b];
 % Print the size of the augmented matrix
-fprintf("The size of the augmented matrix is: %dx%d\n", size(AM))
+fprintf("The size of the augmented matrix is: %d x %d\n", size(AM))
 %% Question 2: rref()
 clc
 % Set up the A and b matrices
@@ -47,11 +47,19 @@ clc
 % Starter code with reference plane and axes in green.
 clc, close all
 figure
+% Set up A and b matrices
+A = [1, 2, -3; 2, 1, -3];
+b = [2; -2];
+% Make augmented matrix
+AM = [A, b];
+RAM_1 = rref(AM);
+disp("RAM_1 =")
+disp(RAM_1)
 % Choose POLAR or CARTESIAN coordinates
-use_polar_coordinates = true % options: true (polar) or false (cartesian)
+use_polar_coordinates = true; % options: true (polar) or false (cartesian)
 % Choose a colormap.
 % try other colormaps such as cool, hot, hsv, prism, flag, jet, parula, lines
-colormap flag
+colormap cool
 % choose preferred shading for surface plots
 shading faceted % Shading methods are faceted, flat, and interp.
 L = 5; % A default limit so we can easily control the axes.
@@ -120,3 +128,66 @@ rotate3d on; view([100,10]); axis equal;
 
 % Make figure full screen
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);
+% Question 7-8 - Use surf command to show the two planes
+% The meshgrid defined by arrays X and Y is still defined.
+% We will use this to show each plane as a surface plot.
+% First plane
+a1 = A(1,1); a2 = A(1,2); a3 = A(1,3); d = b(1);
+Z = (d - a1 * X - a2 * Y)/a3;
+p1 = surf(X,Y,Z); % Draw the plane defined by the first equation.
+p1.set('facealpha', 0.40); % Make the surface plot partially transparent.
+
+% Students should add the second plane here.
+% Access second row of coefficients
+a1 = A(2,1); a2 = A(2,2); a3 = A(2,3); d = b(2); 
+% Create new Z variable for new plane
+Z = (d - a1 * X - a2 * Y)/a3;
+% Plot it with surf()
+p2 = surf(X,Y,Z);
+% Make plane transparent
+p2.set('facealpha', 0.40);
+
+% Question 9: Adding Two Test Planes
+% Part a)
+% Add them to the 3d-plot using the fill3 command.
+P1 = [ 4; 0; +5];
+P2 = [ 4; 0; -5];
+P3 = [ 0; -4; -5];
+P4 = [ 0; -4; +5];
+rect1 = [P1 P2 P3 P4];
+X = rect1(1, :); Y = rect1(2, :); Z = rect1(3, :);
+plot3(X, Y, Z, 'bo', 'MarkerSize', 12 , 'MarkerFaceColor', 'cyan')
+rectangle = fill3(X, Y, Z, 'blue:');
+rectangle.set('facealpha', 0.4)
+% Add another plane on the plot
+Q1 = [ 0; 4; +5];
+Q2 = [ 0; 4; -5];
+Q3 = [ -4; 0; -5];
+Q4 = [ -4; 0; +5];
+rect2 = [Q1 Q2 Q3 Q4];
+X = rect2(1, :); Y = rect2(2, :); Z = rect2(3, :);
+plot3(X, Y, Z, 'bo', 'MarkerSize', 12 , 'MarkerFaceColor', 'red')
+rectangle = fill3(X, Y, Z, 'magenta:');
+rectangle.set('facealpha', 0.4)
+
+% System 2
+% Set up A and b matrices
+A = [1, 2, -3; 2, 1, -3; 1, -1, 0];
+b = [2; -2; 4];
+% Make augmented matrix
+AM = [A, b];
+
+RAM_2 = rref(AM);
+disp("RAM_2 =")
+disp(RAM_2)
+
+% System 3
+% Set up A and b matrices
+A = [1, 2, -3; 2, 1, -3; 1, -1, 0];
+b = [2; -2; -4];
+% Make augmented matrix
+AM = [A, b];
+
+RAM_3 = rref(AM);
+disp("RAM_3 =")
+disp(RAM_3)
