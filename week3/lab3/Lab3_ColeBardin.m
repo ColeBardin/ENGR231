@@ -199,4 +199,3 @@ for k = 0:1:360*N
     view([k, elevation])
     pause(0.05);
 end
-
