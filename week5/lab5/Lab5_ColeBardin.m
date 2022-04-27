@@ -166,3 +166,46 @@ disp(A*x - b)
 %% Question 8
 clc, clear, close all
 
+A11 = pascal(3);
+A12 = pascal(3);
+A12 = A12(:, 1:2);
+A21 = zeros(2,3);
+A22 = pascal(2);
+A = [A11 A12; A21 A22];
+
+B11 = inv(A11)
+B22 = inv(A22)
+B12 = -1*B11*A12*B22
+B = inv(A)
+
+%% Questions 9-10
+clc, clear, close all
+
+message1 = "Beware the Jabberwock, my son!\nThe jaws that bite, the claws that catch!\n";
+message2 = "Beware the Jubjub bird,\nand shun The frumious Bandersnatch!\n";
+message = message1 + message2; % combine the two strings
+message = char(message); % convert to character array
+%fprintf(message) % display the full message
+
+A = [1, -2, 2; 2, -1, 2; 2, -2, 3];
+
+% We better encode it, so the Jabberwock is not warned in advance!
+while mod(length(message),3) ~= 0
+    message = [message ' ']; % Add another space.
+end
+M = reshape( message, 3, []); % Reshape message into a 3xn matrix
+A = [1 -2 2; 2 -1 2; 2 -2 3]; % Matrix to encrypt the message.
+coded_message = A*M;
+
+% The son will now decode his father's message using the matrix inverse.
+decoder = round( inv(A) );
+message_in_a_matrix = decoder*coded_message;
+original_message = char( reshape( message_in_a_matrix, 1, [] ) );
+fprintf(original_message)
+
+
+coded_message1 = [68 258 278 -34 88 -59 95 121 111 -49 -61 257 109 77 -20 110 240 -53 249 115 121 18 71 86 8 -71 129 -65 133 5 4 -51 110 6 -55 107 144 -23 -61 119 85 30 267 138 38 119 252 115 71 121 140 187 69 105 116 99 -64; 237 402 420 171 309 148 322 342 315 183 159 386 324 289 199 321 372 172 378 329 317 167 294 315 156 142 335 151 349 221 206 182 330 152 150 334 363 193 159 324 303 173 400 355 168 351 384 329 216 198 351 326 284 320 192 326 138; 237 475 504 102 301 70 311 347 321 100 76 466 328 279 130 321 442 90 454 331 328 160 277 301 144 58 345 68 358 166 162 98 327 139 74 329 376 124 76 335 297 172 483 366 171 350 460 331 202 236 364 366 268 322 228 317 60];
+
+message_in_a_matrix = decoder*coded_message1;
+original_message = char( reshape( message_in_a_matrix, 1, [] ) );
+fprintf(original_message)
