@@ -122,5 +122,47 @@ AI = [A, I];
 AIR = rref(AI);
 disp(AIR(:,5:end))
 %% Question 6
+clc, clear, close all
 
+n = 5;
+X = -ones(n-1,1);
+Y = 2*ones(n,1);
+Z = X;
+
+A  = gallery('tridiag',X,Y,Z);
+A = sym(full(A));
+
+disp("Det of tridiag A=")
+disp(det(A))
+disp("Inverse of tridiag A=")
+disp(inv(A))
+disp("Adjoint of tridiag A=")
+disp(adjoint(A))
+
+%% Question 7
+clc, clear, close all
+
+n = 5;
+X = -ones(n-1,1);
+Y = 2*ones(n,1);
+Z = X;
+
+A  = gallery('tridiag',X,Y,Z);
+b = [0; 0; 0; 0; 6];
+
+AI = [A, eye(5)];
+AIR = rref(AI);
+Ainv = AIR(:,n+1:end);
+disp("Inverse of tridiag=")
+disp(Ainv)
+
+x = Ainv*b;
+x = x(:,end);
+disp("Solution set=")
+disp(x)
+
+disp("Ax-b =")
+disp(A*x - b)
+%% Question 8
+clc, clear, close all
 
