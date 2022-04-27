@@ -2,7 +2,6 @@
 %% Aplications of the Inverse Matrix
 %% Question 1
 clc, clear, close all
-disp("Question 1:")
 
 syms x y;
 A = @(x,y) [x, y, 15-x-y; 20-2*x-y, 5, 2*x+y-10; x+y-5, 10-y, 10-x];
@@ -41,7 +40,7 @@ for y1 = [1,3,7,9]
 end
 %% Question 2
 clc, clear, close all
-disp("Question 2:")
+
 syms x y;
 A = @(x,y) [x, y, 15-x-y; 20-2*x-y, 5, 2*x+y-10; x+y-5, 10-y, 10-x];
 
@@ -52,7 +51,6 @@ disp("Sum of all elements in M3=")
 disp(S)
 %% Question 3
 clc, clear, close all
-disp("Question 3:")
 
 A = sym(pascal(4));
 disp("Pascal(4)")
