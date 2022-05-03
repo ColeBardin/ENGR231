@@ -185,8 +185,6 @@ message = message1 + message2; % combine the two strings
 message = char(message); % convert to character array
 %fprintf(message) % display the full message
 
-A = [1, -2, 2; 2, -1, 2; 2, -2, 3];
-
 % We better encode it, so the Jabberwock is not warned in advance!
 while mod(length(message),3) ~= 0
     message = [message ' ']; % Add another space.
