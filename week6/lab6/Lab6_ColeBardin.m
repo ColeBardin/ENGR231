@@ -125,9 +125,17 @@ for m = -10:10
         new_cell = translate(dx, dy) * cell1;
         x = new_cell(1,:); y = new_cell(2,:);
         next_color = color_choice(randi([1 3]), :);
+        if norm(v) < 4
+            next_color = rand(size(x));
+        end
         fill(x,y, next_color, 'EdgeColor','yellow', 'LineWidth', 2)
         pause(0.025) % Animates the honeycomb tessellation
     end
+end
+%% Question 8
+%% Rotate Function
+function [ T ] = rotate(angle_in_deg)
+    T = [dcos(angle_in_deg), -dsin(angle_in_deg), 0; dsin(angle_in_deg), dcos(angle_in_deg), 0; 0,0,1];
 end
 %% Translate Function
 function [ T ] = translate( dx, dy )
