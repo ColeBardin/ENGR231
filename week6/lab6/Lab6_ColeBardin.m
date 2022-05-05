@@ -133,6 +133,73 @@ for m = -10:10
     end
 end
 %% Question 8
+Z = rotate(30) * [20; 21; 1]; z = Z(1:2) % grab just the first two components
+n = norm(z) 
+%% Question 9
+clear, clc, close all
+figure(9)
+title('Wind Turbine')
+hold on
+pole = [ -2, 2, 1, -1;-50 -50, 0, 0];
+x = pole(1, :); y = pole(2, :);
+fill(x, y, [0.5, 0.5, 0.5]); % dark grey
+blade1 = [0, 5, 20, 20, 5, 0;-1, -2, -1, 1, 2, 1;1, 1, 1, 1, 1, 1];
+
+x = blade1(1, :); y = blade1(2, :);
+h1 = fill(x, y, "blue");
+% rotate blade1 by 120 degrees to create blade2. Draw it!
+blade2 = rotate(120)*blade1;
+x = blade2(1, :); y = blade2(2, :);
+h2 = fill(x, y, "blue");
+% rotate blade2 by 120 degrees to create blade3. Draw it!
+blade3 = rotate(120)*blade2;
+x = blade3(1, :); y = blade3(2, :);
+h3 = fill(x, y, "blue");
+hub = circle(0, 0, 2); % draw the hub
+axis equal
+axis([-25, 25, -50, 25])
+grid on
+set(gca, 'fontsize', 20)
+% Question 10
+% 10. Animate the wind turbine! Make it spin!!
+N = 10; % ten complete revolutions
+delta = 5; % degrees
+
+colormap cool;
+
+for k = 1 : 72*N
+    % delete the previous position of each blade and the old hub
+    delete(hub)
+    % delete h1, h2 and h3 here
+    delete(h1)
+    delete(h2)
+    delete(h3)
+    % rotate each blade by delta
+    blade1 = rotate(delta)*blade1;
+    blade2 = rotate(delta)*blade2;
+    blade3 = rotate(delta)*blade3;
+    % redefine blade1, blade2 and blade3 here – rotate each by delta
+    
+    % draw all three blades using fill. Use the handles h1, h2 and h3 as before
+    x = blade1(1, :); y = blade1(2, :);
+    h1 = fill(x, y, "blue");
+    x = blade2(1, :); y = blade2(2, :);
+    h2 = fill(x, y, "blue");
+    x = blade3(1, :); y = blade3(2, :);
+    C = rand(size(x));
+    h3 = fill(x, y, C);
+    % draw the hub again
+    hub = circle(0, 0, 2);
+    pause(0.025)
+end
+%% Circle Function
+function h = circle(x,y,r)
+    hold on
+    theta = 0:pi/50:2*pi;
+    xunit = r * cos(theta) + x;
+    yunit = r * sin(theta) + y;
+    h = fill(xunit, yunit, [0.25 0.25 0.25]); % dark grey color
+end
 %% Rotate Function
 function [ T ] = rotate(angle_in_deg)
     T = [dcos(angle_in_deg), -dsin(angle_in_deg), 0; dsin(angle_in_deg), dcos(angle_in_deg), 0; 0,0,1];
