@@ -186,7 +186,7 @@ for k = 1 : 72*N
     x = blade2(1, :); y = blade2(2, :);
     h2 = fill(x, y, "blue");
     x = blade3(1, :); y = blade3(2, :);
-    C = rand(size(x));
+    C = rand(size(x)); % For fun, color third blade bilinear interpolation
     h3 = fill(x, y, C);
     % draw the hub again
     hub = circle(0, 0, 2);
