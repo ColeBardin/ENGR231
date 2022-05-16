@@ -105,3 +105,34 @@ eq = solve(dAL, L)
 
 dA1 = rref(A - eq(1)*eye(2))
 dA2 = rref(A - eq(2)*eye(2))
+
+%% Homework 8.2
+%% Question 1
+clc, clear
+A = [4, 1; -1, 6];
+syms L;
+dAL = det(A-L*eye(2))
+eq = solve(dAL, L)
+
+%% Question 2
+clc, clear
+A = [-9, 4; -4, -7];
+syms L;
+dAL = det(A-L*eye(2))
+eq = solve(dAL, L)
+
+%% Question 4
+clc, clear
+A = [1, -26; 1, 11]
+P = [-5, -1; 1, 0]
+C = [6, -1; 1 6]
+
+t = inv(P)*A*P
+
+%% Question 5
+clc, clear
+A = [4, -2; 1, 2]
+P = [1, -1; 0, -1]
+C = [3, 1; -1, 3]
+
+t = inv(P)*A*P
