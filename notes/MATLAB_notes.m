@@ -178,6 +178,25 @@ PLOTTING marker options:
 'p'     Pentagram
 'h'     Hexagram
 'none'  NONE
+Marker Style Parameters:
+'Marker'			marker style
+'MarkerIndices'		int/ints	displays circle marker at given indices
+'MarkerSize'		int
+'MarkerEdgeColor'	color
+'MarkerFaceColor'	color
+
+Line Style:
+'-'		Solid Line (default)
+'--'	Dashed Line
+':'		Dotted Line
+'-.'	Dash-Dotted Line
+Line Style Parameters:
+'Color'			color
+'LineStyle'		line style (Above)
+'LineWidth'		int
+
+
+
 
 Tables can hold columns of different data types
 accessing table data:
@@ -279,20 +298,22 @@ just like python
 
 
 
-Declaring inline funcs:
+%% Declaring funcs:
 
-function trans_mat = translator(x,y);
-trans_mat = [1,0,x;0,1,y;0,0,1];
+% full function. must be at bottom of document:
+function ret_obj = funcname(param1, param2);
+ret_obj = [1,0,param1;0,1,param2;0,0,1];
 
 
 Calling func:
-trans_mat_1_2 = translate(1,2);
+trans_mat_1_2 = funcname(1,2);
+
 
 
 
 Anonymous Functions:
+% Must be declared ABOVE call
+F = @(x,y) [x;y];
 
-F = @(x,y) [x ; y];
-
-declare before:
-b = F(1,2) returns [1,2] into b array
+Calling func:
+b = F(1,2) % returns [1,2] into b array varaible
