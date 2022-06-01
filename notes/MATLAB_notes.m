@@ -1,5 +1,5 @@
-MATLAB Notes
-3/30/2022
+%% MATLAB Notes
+%% 3/30/2022
 
 basic variables and arithmetic operations
 
@@ -22,7 +22,7 @@ load filename.mat
 load particular var: load filename.mat var_name
 
 "clear" command clears the Workspace
-
+clc, clear, close all % Good usage at beginning of each section
 
 entering variables name from workspace displays contents
 
@@ -209,7 +209,7 @@ v =
     9.0698
 
 Logical indexing to reassign values in an array
-x(x==99) = 1
+x(x==99) = 1 % Reassignes all values of 99 to 1 in x array
 
 Logical expressions can be mixed with & and | for further logic
 
