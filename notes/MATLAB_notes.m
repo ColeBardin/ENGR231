@@ -288,3 +288,11 @@ trans_mat = [1,0,x;0,1,y;0,0,1];
 Calling func:
 trans_mat_1_2 = translate(1,2);
 
+
+
+Anonymous Functions:
+
+F = @(x,y) [x ; y];
+
+declare before:
+b = F(1,2) returns [1,2] into b array
