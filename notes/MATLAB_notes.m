@@ -145,30 +145,30 @@ format simimar to matplotlib in python
 "r--o"
 red dashed lines with o markers
 
-'hold on' command allows to not make separate plots after each call
-'hold off'
+hold on 
+hold off
 
 plot(y) gives 1-n x values for plot
 
 Adjust linewidth:
-plot(y, "LineWidth",5) // yes they're two arguments...
+plot(y, "LineWidth",5) %  yes they're two arguments...
 can be "" or ''
-
-use other functions to change plot:
-title()
-ylabel()
-xlabel()
-legend()
-
-optional:
-'FaceColor'
-histogram()
-
 
 fill(x,y,c) to fill x,y graph points with color c
 can also give colormap inputs
 No need to tell x(end) to go back to x(1) since fill command will close shape
 
+%% Plot Formatting:
+% Title and background formatting
+title('title')
+ylabel('ylabel')
+xlabel('xlabel')
+legend('line1','line2','Location','north')
+axis([xmin, xmax, ymin, ymax])
+xticks(min:step:max)
+yticks(min:step:max)
+
+% Plot Object Formatting:
 PLOTTING marker options:
 'o'     Open circle
 '+'     Plus sign
@@ -205,8 +205,49 @@ Line Style Parameters:
 'LineWidth'		int
 
 
+% Figure
+fig = figure()
+	% Useful for multiple plots in same program. need more notes
+
+%% Subplots
+subplot(m,n,p) % m num rows, n is num cols, p is position index. similar to matplotlib
+call subplot(m,n,p) before calling plot func to change which subplot is being operated on
+
+% Spanning:
+subplot(2,2,1) % upper left
+plot()...
+subplot(2,2,2) % upper right
+plot()...
+subplot(2,2,[3,4]) % bottom two
+
+% Subplot handles
+ax = subplot(2,2,1)
+allows for axis formatting:
+ax.FontSize = 15;
+ax.LineWidth = 2;
+
+% Replace subplot index with empty index
+subplot(2,2,2, 'replace') % replaces subplot with index 2 of a 2x2 grid with an empty plot
+
+% Custom positions for subplots:
+pos1 = [0.1 0.3 0.3 0.3]
+subplot('position', pos1)
+plot()...
+pos2 = [0.5 0.15 0.4 0.7]
+subpolot('position', pos2)
+plot()...
+
+% Polar axis subplot
+ax = subplot(2,1,1,polaraxes);
+polarplot(ax,theta, rho)
 
 
+
+
+
+
+
+%% Tables
 Tables can hold columns of different data types
 accessing table data:
 table_name.data_col_name
