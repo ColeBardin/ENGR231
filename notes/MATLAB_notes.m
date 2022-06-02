@@ -130,6 +130,14 @@ using ~ can ignore first output if only second is needed to reduce memory
 [~,col] = size(x)
 
 
+Norm function:
+int norm(matrix, type);
+A = [1,2,3;4,5,6;7,8,9];
+two_norm = norm(A) % Default 2
+one_norm = norm(A,1) % Use 1 norm
+
+
+
 
 Plotting:
 plot(x,y,format) func takes two arrays
@@ -177,7 +185,7 @@ PLOTTING marker options:
 '<'     Left Triangle
 'p'     Pentagram
 'h'     Hexagram
-'none'  NONE
+'none'  No Marker
 Marker Style Parameters:
 'Marker'			marker style
 'MarkerIndices'		int/ints	displays circle marker at given indices
@@ -190,6 +198,7 @@ Line Style:
 '--'	Dashed Line
 ':'		Dotted Line
 '-.'	Dash-Dotted Line
+'none'	No Line
 Line Style Parameters:
 'Color'			color
 'LineStyle'		line style (Above)
