@@ -139,7 +139,7 @@ one_norm = norm(A,1) % Use 1 norm
 
 
 
-Plotting:
+%% Plotting:
 plot(x,y,format) func takes two arrays
 format simimar to matplotlib in python
 "r--o"
